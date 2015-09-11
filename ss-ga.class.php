@@ -64,13 +64,13 @@ class ssga {
 	 * @return string
 	 */
 	public function create_gif() {
-		$data = array();
+		$query = '';
 		foreach ( $this->data as $key => $item ) {
 			if ( $item !== null ) {
-				$data[$key] = $item;
+				$query .= rawurlencode($key) . "=" . rawurlencode($item) . '&';
 			}
 		}
-		return $this->tracking = self::GA_URL . '?' . http_build_query( $data );
+		return $this->tracking = self::GA_URL . '?' . $query;
 	}
 
 	/**
